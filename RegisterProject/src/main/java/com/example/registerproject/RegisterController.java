@@ -20,6 +20,7 @@ public class RegisterController {
 
     @FXML
     public Label responseLabel;
+
     public void register() {
         UserRegistrar newUser = new UserRegistrar(emailField.getText(), passwordField.getText());
     }
