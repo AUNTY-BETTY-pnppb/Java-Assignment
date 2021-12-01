@@ -21,5 +21,17 @@ public class RegisterApplicationTest {
         assertTrue(testUser.isAnEmail());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"", "m@tsu7", "ca!10"})
+    public void rejectPasswordLength(String passwordTest) {
+        UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
+        assertFalse(testUser.isValidLength());
+    }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"kikkeriki&1", "42pekora!peko"})
+    public void acceptPasswordLength(String passwordTest) {
+        UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
+        assertTrue(testUser.isValidLength());
+    }
 }
