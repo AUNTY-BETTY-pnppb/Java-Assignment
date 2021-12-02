@@ -48,4 +48,18 @@ public class RegisterApplicationTest {
         UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
         assertTrue(testUser.hasLetter());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"kikkeriki&!", "@^pekora!peko"})
+    public void hasNoDigits(String passwordTest) {
+        UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
+        assertFalse(testUser.hasDigit());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"kikkeriki&1", "42pekora!peko"})
+    public void hasDigits(String passwordTest) {
+        UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
+        assertTrue(testUser.hasDigit());
+    }
 }
