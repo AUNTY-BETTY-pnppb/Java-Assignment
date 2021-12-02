@@ -16,10 +16,30 @@ public class RegisterController {
 
     public void register() {
         UserRegistrar newUser = new UserRegistrar(emailField.getText(), passwordField.getText());
-        
+
         if (!newUser.isAnEmail()) {
             responseLabel.setTextFill(Color.FIREBRICK);
             responseLabel.setText("Email is invalid");
+        }
+        else if (!newUser.isValidLength()) {
+            responseLabel.setTextFill(Color.FIREBRICK);
+            responseLabel.setText("Password has to be minimum 7 characters");
+        }
+        else if (!newUser.hasLetter()) {
+            responseLabel.setTextFill(Color.FIREBRICK);
+            responseLabel.setText("Letters must be included in password");
+        }
+        else if (!newUser.hasDigit()) {
+            responseLabel.setTextFill(Color.FIREBRICK);
+            responseLabel.setText("Numbers must be included in password");
+        }
+        else if (!newUser.hasSymbol()) {
+            responseLabel.setTextFill(Color.FIREBRICK);
+            responseLabel.setText("Password must include symbols from: *^&@!");
+        }
+        else {
+            responseLabel.setTextFill(Color.MEDIUMSPRINGGREEN);
+            responseLabel.setText("You have been registered");
         }
     }
 }
