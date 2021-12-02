@@ -62,4 +62,17 @@ public class RegisterApplicationTest {
         UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
         assertTrue(testUser.hasDigit());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"kikkeriki11", "42pekora2peko"})
+    public void hasNoSymbols(String passwordTest) {
+        UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
+        assertFalse(testUser.hasSymbol());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"kikkeriki&1", "42pekora!peko"})
+    public void hasSymbols(String passwordTest) {
+        UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
+        assertTrue(testUser.hasSymbol());
 }
