@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrar {
-    private final String password;
-    private final String email;
+    private String password;
+    private String email;
 
     private static final Pattern letterPatterns = Pattern.compile("[a-zA-Z]");
     private static final Pattern digitPatterns = Pattern.compile("[\\d]");
@@ -48,5 +48,10 @@ public class UserRegistrar {
 
     public boolean isAnEmail() {
         return emailPatterns.matcher(this.email).find();
+    }
+
+    public void reset() {
+        this.email = "";
+        this.password = "";
     }
 }
