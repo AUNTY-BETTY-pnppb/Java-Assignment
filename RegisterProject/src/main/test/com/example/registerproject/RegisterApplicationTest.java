@@ -34,8 +34,8 @@ public class RegisterApplicationTest {
         UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
         assertTrue(testUser.isValidLength());
     }
-    
-     @ParameterizedTest
+
+    @ParameterizedTest
     @ValueSource(strings = {"^@1164@8&!", "@^097613@!!$"})
     public void hasNoLetters(String passwordTest) {
         UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
@@ -75,4 +75,5 @@ public class RegisterApplicationTest {
     public void hasSymbols(String passwordTest) {
         UserRegistrar testUser = new UserRegistrar("pekorapeko@gmail.com", passwordTest);
         assertTrue(testUser.hasSymbol());
+    }
 }
