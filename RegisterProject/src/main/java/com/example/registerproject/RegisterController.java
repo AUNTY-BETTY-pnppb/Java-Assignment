@@ -1,7 +1,5 @@
 package com.example.registerproject;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -20,22 +18,27 @@ public class RegisterController {
         if (!newUser.isAnEmail()) {
             responseLabel.setTextFill(Color.FIREBRICK);
             responseLabel.setText("Email is invalid");
+            newUser.reset();
         }
         else if (!newUser.isValidLength()) {
             responseLabel.setTextFill(Color.FIREBRICK);
             responseLabel.setText("Password has to be minimum 7 characters");
+            newUser.reset();
         }
         else if (!newUser.hasLetter()) {
             responseLabel.setTextFill(Color.FIREBRICK);
             responseLabel.setText("Letters must be included in password");
+            newUser.reset();
         }
         else if (!newUser.hasDigit()) {
             responseLabel.setTextFill(Color.FIREBRICK);
             responseLabel.setText("Numbers must be included in password");
+            newUser.reset();
         }
         else if (!newUser.hasSymbol()) {
             responseLabel.setTextFill(Color.FIREBRICK);
             responseLabel.setText("Password must include symbols from: *^&@!");
+            newUser.reset();
         }
         else {
             responseLabel.setTextFill(Color.MEDIUMSPRINGGREEN);
